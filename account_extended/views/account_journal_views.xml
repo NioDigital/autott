@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="account_journal_dashboard_kanban_view_inherited" model="ir.ui.view">
+		<field name="name">account.journal.dashboard.kanban.inherited</field>
+		<field name="model">account.journal</field>
+		<field name="inherit_id" ref="account.account_journal_dashboard_kanban_view" />
+		<field name="arch" type="xml">
+			<xpath expr="//t[@t-name='JournalBodyBankCash']//div[hasclass('o_kanban_primary_right')]/t" position="before">
+				<div class="row" t-if="dashboard.nb_lines_bank_account_balance &gt; 0">
+					<div id="dashboard_bank_cash_general_outstanding_bal" class="col overflow-hidden text-start">
+						<span title="Outstanding Payments/Receipts">GL/Outstanding Bal</span>
+					</div>
+					<div class="col-auto text-end">
+						<span>
+							<t t-esc="dashboard.general_outstanding_bal" />
+						</span>
+					</div>
+				</div>
+
+			</xpath>
+		</field>
+	</record>
+
+</odoo>
